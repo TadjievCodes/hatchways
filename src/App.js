@@ -1,7 +1,6 @@
-import './App.css';
 import React, { useState, useEffect } from "react";
 import StudentDataCard from "./components/studentCard/StudentCard";
-import "./App.css";
+import styles from "./App.module.css";
 
 
 
