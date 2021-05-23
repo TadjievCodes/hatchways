@@ -4,36 +4,28 @@
   grid-template-rows: min-content, 1fr 1fr;
   grid-gap: 10px;
   grid-template-areas:
-    "avatar name name name expandBtn"
-    "avatar content content . ."
-    ". content content . .";
+    "avatar name . . expandBtn"
+    "avatar content . . ."
+    "avatar content . . .";
   padding: 16px;
   border-bottom: 1px solid lightgrey;
 }
-
 .avatar {
   grid-area: avatar;
   justify-self: center;
-  align-self: start;
+  align-self: center;
   border-radius: 50%;
-  border: 1px solid lightgrey;
-  width: 84px;
-  height: 84px;
-  margin-top: 12px;
-  margin-right: 6px;
+  border: 1px solid black;
+  width: 82px;
+  height: 82px;
 }
 .name {
   grid-area: name;
   margin-bottom: 0;
   margin-top: 0;
-  font-family: "Droid Sans", sans-serif;
 }
 .content {
   grid-area: content;
-  margin-left: 6px;
-  font-family: "Raleway", sans-serif;
-  font-weight: 100;
-  font-size: small;
 }
 .expandBtn {
   grid-area: expandBtn;
@@ -41,6 +33,7 @@
   height: 24px;
   width: 24px;
 }
+
 
 .tagSubmit {
   display: hidden;

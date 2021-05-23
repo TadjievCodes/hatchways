@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import StudentDataCard from "./components/studentCard/StudentCard";
 import styles from "./App.module.css";
-
+import ContentFilter from "./components/contentFilter/ContentFilter";
 
 
 function App() {
