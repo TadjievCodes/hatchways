@@ -35,24 +35,38 @@ function App() {
    
    return (
    
-   <div>
-       
-
+   <div> 
+       <div className={styles.App}>
+      <div className={styles.contentContainer}>
+        <ContentFilter filterFunction={nameFilterFunction} />
+        {nameFilter.map((student, index) => {
+          function findAverage(array) {
+            let sum = 0;
+            for (let i = 0; i < array.length; i++) {
+              sum += parseInt(array[i]);
+            }
+            let average = sum / array.length;
+            return average;
+          }     
+  
         const averageGrade = findAverage(student.grades);
-        return (
-          <StudentDataCard
-            key={index}
-            img={student.pic}
-            firstName={student.firstName}
-            lastName={student.lastName}
-            email={student.email}
-            company={student.company}
-            skill={student.skill}
-            averageGrade={averageGrade}
-          />
-        );
-      })}
+          return (
+            <StudentDataCard
+              key={index}
+              img={student.pic}
+              firstName={student.firstName}
+              lastName={student.lastName}
+              email={student.email}
+              company={student.company}
+              skill={student.skill}
+              grades={student.grades}
+              averageGrade={averageGrade}
+            />
+          );
+        })}
+      </div>
     </div>
+  </div> 
   );
 }
 
