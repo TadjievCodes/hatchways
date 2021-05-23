@@ -25,8 +25,9 @@ function App() {
     const newStudentData = await response.json();
     console.log(newStudentData);
     setStudentData(newStudentData.students);
+    setNameFilter(newStudentData.students);
   }
-  
+
   useEffect(() => {
     fetchUrl(`https://api.hatchways.io/assessment/students`);
   }, []); 
@@ -35,15 +36,8 @@ function App() {
    return (
    
    <div>
-      {studentData.map((student, index) => {
-        function findAverage(array) {
-          let sum = 0;
-          for (let i = 0; i < array.length; i++) {
-            sum += parseInt(array[i]);
-          }
-          let average = sum / array.length;
-          return average;
-        }
+       
+
         const averageGrade = findAverage(student.grades);
         return (
           <StudentDataCard
