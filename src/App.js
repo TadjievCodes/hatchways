@@ -53,10 +53,17 @@ function App() {
   // api call with async await
   async function fetchUrl(url) {
     const response = await fetch(url);
-    const newStudentData = await response.json();
-    console.log(newStudentData);
-    setStudentData(newStudentData.students);
-    setNameFilter(newStudentData.students);
+    
+    const json = await response.json();
+    let newStudentData = [];
+    json.students.map(student => {
+      let addTags = student;
+      addTags.tags = [];
+      newStudentData.push(addTags);
+    });
+    setStudentData(newStudentData);
+    setFilterContent(newStudentData);
+
   }
 
   useEffect(() => {
@@ -70,7 +77,9 @@ function App() {
        <div className={styles.App}>
       <div className={styles.contentContainer}>
         <ContentFilter filterFunction={nameFilterFunction} type={`name`} />
-        {nameFilter.map((student, index) => {
+         <ContentFilter filterFunction={tagFilterFunction} type={`tag`} />
+        {filterContent.map((student, index) => {
+
           function findAverage(array) {
             let sum = 0;
             for (let i = 0; i < array.length; i++) {
@@ -83,7 +92,8 @@ function App() {
         const averageGrade = findAverage(student.grades);
           return (
             <StudentDataCard
-              key={index}
+              key={index.toString()}
+              index={index}
               img={student.pic}
               firstName={student.firstName}
               lastName={student.lastName}
