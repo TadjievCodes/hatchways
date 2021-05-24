@@ -26,9 +26,31 @@ function App() {
         newNameFilter.push(student);
       }
     });
-    setNameFilter(newNameFilter);
+   setFilterContent(newNameFilter);
   };
 
+  const tagFilterFunction = str => {
+    if (str) {
+      let newTagFilter = [];
+      filterContent.map(student => {
+        let tagged = false;
+        student.tags.map(tag => {
+          if (tag.includes(str)) {
+            tagged = true;
+          }
+        });
+        if (tagged) {
+          newTagFilter.push(student);
+        }
+      });
+      setFilterContent(newTagFilter);
+    } else {
+      setFilterContent(studentData);
+    }
+
+  }; 
+
+  // api call with async await
   async function fetchUrl(url) {
     const response = await fetch(url);
     const newStudentData = await response.json();
