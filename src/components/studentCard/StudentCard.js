@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./StudentCard.module.css";
+
 
 const UserDataCard = ({
   img,
@@ -9,7 +10,10 @@ const UserDataCard = ({
   company,
   skill,
   averageGrade,
+  grades,
 }) => {
+  const [showGrades, setShowGrades] = useState(false);
+
   return (
     <div>
       <div className={styles.container}>
@@ -20,9 +24,30 @@ const UserDataCard = ({
         <div>Company: {company}</div>
         <div>Skill: {skill}</div>
         <div>Average: {averageGrade}%</div>
+          {showGrades && (
+          <div>
+            {grades.map((grade, index) => {
+              return (
+                <div>
+                  test{index}: {grade}%
+                </div>
+              );
+            })}
+          </div>
+        )} 
       </div>
-      <button className={styles.expandBtn}>Btn</button>
-    </div>
+
+     <button
+        className={styles.expandBtn}
+        onClick={() => {
+          setShowGrades(!showGrades);
+        }}
+      >
+       {showGrades ? `-` : `+`} 
+       
+      </button>
+
+      </div>
  </div>
   );
 };
