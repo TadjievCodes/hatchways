@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import StudentDataCard from "./components/studentCard/StudentCard";
 import styles from "./App.module.css";
 import ContentFilter from "./components/contentFilter/ContentFilter";
+// Decided to use modular css to make the css more obviously tied to the relevant components
 
 
 function App() {
