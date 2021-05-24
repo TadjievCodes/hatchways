@@ -5,7 +5,7 @@ const ContentFilter = ({ filterFunction, type }) => {
   return (
     <input
      className={styles.input}
-      placeholder={`Search by name`}
+     placeholder={`Search by ${type}`} 
       onChange={e => {
         filterFunction(e.target.value.toLowerCase().trim());
       }}
