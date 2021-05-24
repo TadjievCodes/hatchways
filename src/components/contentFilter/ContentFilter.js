@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./ContentFilter.module.css";
 
-const ContentFilter = ({ filterFunction }) => {
+const ContentFilter = ({ filterFunction, type }) => {
   return (
     <input
       onChange={e => {
