@@ -8,6 +8,15 @@ function App() {
     
   const [studentData, setStudentData] = useState([]);
   const [nameFilter, setNameFilter] = useState([]);
+  const [filterContent, setFilterContent] = useState([]);
+
+  const addTag = (str, index) => {
+    const tagForStudentData = [...studentData];
+    tagForStudentData[index].tags.push(str);
+    setStudentData(tagForStudentData);
+  };
+
+  // filter functions for sorting the content
 
   const nameFilterFunction = str => {
     let newNameFilter = [];
