@@ -7,8 +7,9 @@ import ContentFilter from "./components/contentFilter/ContentFilter";
 function App() {
     
   const [studentData, setStudentData] = useState([]);
-  const [nameFilter, setNameFilter] = useState([]);
   const [filterContent, setFilterContent] = useState([]);
+  const [nameFilter, setNameFilter] = useState([]);
+  const [tagFilter, setTagFilter] = useState([]);
 
   const addTag = (str, index) => {
     const tagForStudentData = [...studentData];
@@ -26,13 +27,25 @@ function App() {
         newNameFilter.push(student);
       }
     });
-   setFilterContent(newNameFilter);
+     
+    let contentFilter = [];
+    tagFilter.map(student => {
+      const fullName = `${student.firstName} ${student.lastName}`.toLowerCase();
+      if (fullName.includes(str)) {
+        contentFilter.push(student);
+      }
+    });
+    setFilterContent(contentFilter);
+    setNameFilter(newNameFilter);
+
   };
 
   const tagFilterFunction = str => {
     if (str) {
       let newTagFilter = [];
-      filterContent.map(student => {
+      
+       let newContentFilter = [];
+       studentData.map(student => {
         let tagged = false;
         student.tags.map(tag => {
           if (tag.includes(str)) {
@@ -43,9 +56,25 @@ function App() {
           newTagFilter.push(student);
         }
       });
-      setFilterContent(newTagFilter);
+            filterContent.map(student => {
+        let tagged = false;
+        student.tags.map(tag => {
+          if (tag.includes(str)) {
+            tagged = true;
+          }
+        });
+        if (tagged) {
+          newContentFilter.push(student);
+        }
+      });
+      setFilterContent(newContentFilter);
+      setTagFilter(newTagFilter);
+
+
+
     } else {
-      setFilterContent(studentData);
+      setFilterContent(nameFilter);
+      setTagFilter(studentData);
     }
 
   }; 
@@ -63,6 +92,8 @@ function App() {
     });
     setStudentData(newStudentData);
     setFilterContent(newStudentData);
+    setNameFilter(newStudentData);
+    setTagFilter(newStudentData);
 
   }
 
