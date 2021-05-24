@@ -102,6 +102,8 @@ function App() {
               skill={student.skill}
               grades={student.grades}
               averageGrade={averageGrade}
+              tags={student.tags}
+              addTag={addTag}
             />
           );
         })}
