@@ -6,7 +6,7 @@ button:focus {
 }
 
 .App {
-  text-align: center;
+  /*text-align: center;*/
   background-color: whitesmoke;
   display: grid;
   grid-template-columns: 15% 1fr 15%;
