@@ -106,6 +106,7 @@ function App() {
 
   }
 
+ // URL of the API
   useEffect(() => {
     fetchUrl(`https://api.hatchways.io/assessment/students`);
   }, []); 
@@ -119,7 +120,8 @@ function App() {
         <ContentFilter filterFunction={nameFilterFunction} type={`name`} />
          <ContentFilter filterFunction={tagFilterFunction} type={`tag`} />
         {filterContent.map((student, index) => {
-
+          
+          // function getting the average grade
           function findAverage(array) {
             let sum = 0;
             for (let i = 0; i < array.length; i++) {
