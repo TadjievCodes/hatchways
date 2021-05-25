@@ -25,10 +25,14 @@
   grid-area: name;
   margin-bottom: 0;
   margin-top: 0;
+  font-family: "Droid Sans", sans-serif;
 }
 .content {
   grid-area: content;
   margin-left: 6px;
+  font-family: "Raleway", sans-serif;
+  font-weight: 100;
+  font-size: small;
 }
 .expandBtn {
   grid-area: expandBtn;
