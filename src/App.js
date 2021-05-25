@@ -6,11 +6,19 @@ import ContentFilter from "./components/contentFilter/ContentFilter";
 
 
 function App() {
-    
+// We are using state of React in this app instead of redux
+// As state management is easier especially in this application
+// And we have a relatively consistent component structure
+
   const [studentData, setStudentData] = useState([]);
   const [filterContent, setFilterContent] = useState([]);
   const [nameFilter, setNameFilter] = useState([]);
   const [tagFilter, setTagFilter] = useState([]);
+
+// we use nameFilter and tagFilter as references so that
+  // both filters can be active at the same time
+  // If we were to scale this with many more filter options
+  // I would probably consider using a different solution
 
   const addTag = (str, index) => {
     const tagForStudentData = [...studentData];
@@ -18,7 +26,7 @@ function App() {
     setStudentData(tagForStudentData);
   };
 
-  // filter functions for sorting the content
+  // filter functions for sorting the content as required
 
   const nameFilterFunction = str => {
     let newNameFilter = [];
@@ -105,7 +113,7 @@ function App() {
    
    return (
    
-   <div> 
+
        <div className={styles.App}>
       <div className={styles.contentContainer}>
         <ContentFilter filterFunction={nameFilterFunction} type={`name`} />
@@ -141,7 +149,7 @@ function App() {
         })}
       </div>
     </div>
-  </div> 
+  
   );
 }
 

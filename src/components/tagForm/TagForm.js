@@ -16,7 +16,7 @@ const TagForm = ({ addTag, index }) => {
         type="text"
         value={newTag}
         onChange={e => {
-          setNewTag(e.target.value);
+          setNewTag(e.target.value.toLowerCase());
         }}
       />
       <input className={styles.tagSubmit} type="submit" />
