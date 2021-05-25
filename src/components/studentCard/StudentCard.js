@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import styles from "./StudentCard.module.css";
 import TagForm from "../tagForm/TagForm";
 import Tag from "../tag/Tag";
+import OpenIcon from "../icons/OpenIcon";
+import CloseIcon from "../icons/CloseIcon";
 
 
 const UserDataCard = ({
@@ -23,30 +25,31 @@ const UserDataCard = ({
     <div>
       <div className={styles.container}>
       <img src={img} className={styles.avatar} alt="avatar" />
-      <h1 className={styles.name}>{`${firstName} ${lastName}`}</h1>
+      <h1
+        className={styles.name}
+      >{`${firstName.toUpperCase()} ${lastName.toUpperCase()}`}</h1>
+
+
       <div className={styles.content}>
         <div>Email: {email}</div>
         <div>Company: {company}</div>
         <div>Skill: {skill}</div>
         <div>Average: {averageGrade}%</div>
           {showGrades && (
-          <div>
+          <div className={styles.extendedContent}>
             {grades.map((grade, index) => {
               return (
                 <div key={index.toString()}>
-                  test{index}: {grade}%
+                   {`test${index}:\xa0\xa0\xa0\xa0\xa0\xa0${grade}%`}
                 </div>
               );
             })}
   
             {tags.length > 0
               ? tags.map((tag, index) => {
-                  return (
-                    <Tag key={index.toString()} tag={tag} />
-                    // <div className={styles.tag} key={index.toString()}>
-                    //   {tag}
-                    // </div>
-                  );
+                 
+                 return <Tag key={index.toString()} tag={tag} />;
+
                 })
               : null}
             <TagForm index={index} addTag={addTag} />
@@ -55,15 +58,20 @@ const UserDataCard = ({
         )} 
       </div>
 
-     <button
-        className={styles.expandBtn}
-        onClick={() => {
-          setShowGrades(!showGrades);
-        }}
-      >
-       {showGrades ? `-` : `+`} 
-       
-      </button>
+       {showGrades ? (
+        <CloseIcon
+          className={styles.expandBtn}
+          setShowGrades={setShowGrades}
+          showGrades={showGrades}
+        />
+      ) : (
+        <OpenIcon
+          className={styles.expandBtn}
+          setShowGrades={setShowGrades}
+          showGrades={showGrades}
+        />
+      )}
+      
 
       </div>
  </div>
